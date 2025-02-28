@@ -12,16 +12,18 @@ terraform {
   }
 }
 
+locals {
+  local-global-var = var.global-var
+}
+
 provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-  instance_tenancy = "default"
-
-  tags = {
-    Name = "jg-vpc"
-  }
+module "my-vpc" {
+  source = "./modules/my-vpc"
 }
 
+module "my-security-groups" {
+  source = "./modules/my-security-groups"
+}
