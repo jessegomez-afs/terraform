@@ -21,7 +21,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "jg-vpc"
+    Name = "jg-vpc-new-name"
   }
 }
 
